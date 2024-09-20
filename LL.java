@@ -1,61 +1,87 @@
-import java.util.List;
-
+import java.util.*;
 public class LL {
 
-    public static class Node {
-        int data;
-        Node next;
+    Node head;
 
-        public Node(int data) {
-            this.data = data;
-            this.next = null;
-        }
+    class Node
+    {
+String data;
+Node next;
+
+Node(String data)
+{
+    this.data=data;
+    this.next = null;
+
+}
+
     }
+//add first // add last
 
-    public static class LinkedList {
+public void addFirst(String data)
+{
+Node newNode = new Node(data);
 
-        Node head = null;
-        Node tail = null;
+if(head == null)
+{
+    head = newNode;
+    return;
+}
+newNode.next = head ;
+head = newNode;
 
-        public void addNode(Node node)
-        {
-            if(head==null)
-            {
-                head=node;
-                tail=node;
-            }
-            else
-            {
-                tail.next=node;
-                tail=node;
-            }
-        }
-        
-         void display()
-        {
-            Node temp = head;
-            while (temp != null) {
-                System.out.print(temp.data + "->");
-                temp = temp.next;
-                }
-                System.out.print("null");
-                System.out.println();
-        } 
-        
+}
+
+public void addLast(String data)
+{
+    Node newNode = new Node(data);
+    while(head!=null)
+    {
+        head = newNode;
+        return;
     }
+Node currNode = head;
+while(currNode.next!=null)
+{
+    currNode = currNode.next;
+}
+currNode.next = newNode;
 
-    public static void main(String[] args) {
-        
-       
-        LinkedList list = new LinkedList();
-        list.addNode(new Node(1));
-        list.addNode(new Node(2));
-        list.addNode(new Node(3));
-        list.addNode(new Node(4));
-        list.addNode(new Node(5));
-        list.addNode(new Node(6));
-        list.addNode(new Node(7));
-list.display();
+}
+
+public void printList()
+{
+
+    if(head==null)
+    {
+        System.out.println("no elements");
+        return;
+    }
+    Node currNode = head;
+while(currNode!=null)
+{
+    System.out.print(currNode.data + " -> ");
+    currNode = currNode.next;
+}
+System.out.println("NULL");
+}
+
+
+public static void main(String args[])
+    {
+LL list = new LL();
+list.addLast("Dhruv");
+list.addLast("is");
+list.addLast("a");
+list.addLast("good");
+list.addLast("boy");
+
+
+
+
+list.printList();
+
+
     }
     
 }
